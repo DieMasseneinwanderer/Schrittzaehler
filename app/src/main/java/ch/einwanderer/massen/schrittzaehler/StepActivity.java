@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 
 import ch.appquest.stepcounter.StepCounter;
 import ch.appquest.stepcounter.StepListener;

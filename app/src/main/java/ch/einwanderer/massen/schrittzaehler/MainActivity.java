@@ -12,13 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final int START_STATION_CODE = 1729, END_STATION_CODE = 1337;
-    private int startStation;
+    private int startStation = -1;
+    Button btnEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnStart = (Button) findViewById(R.id.btnStart);
-        Button btnEnd = (Button) findViewById(R.id.btnEnd);
+        btnEnd = (Button) findViewById(R.id.btnEnd);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
 
@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 scanQRForResult(END_STATION_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnEnd.setVisibility( (startStation == -1) ? View.INVISIBLE : View.VISIBLE );
     }
 
     private void scanQRForResult(int requestCode) {
